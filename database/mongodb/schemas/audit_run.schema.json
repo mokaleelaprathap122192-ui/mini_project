@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AuditRun",
+  "type": "object",
+  "required": ["_id", "uploadId", "userId", "pipelineStatus", "languagesAnalyzed", "clfiScore", "startedAt"],
+  "properties": {
+    "_id":                { "bsonType": "objectId" },
+    "uploadId":           { "bsonType": "objectId" },
+    "userId":             { "bsonType": "objectId" },
+    "pipelineStatus":     { "enum": ["queued","running","completed","failed"] },
+    "languagesAnalyzed":  { "type": "array", "items": { "type": "string" } },
+    "clfiScore":          { "type": "number", "minimum": 0, "maximum": 100 },
+    "metrics":            { "type": "object" },
+    "alerts":             { "type": "array" },
+    "startedAt":          { "bsonType": "date" },
+    "finishedAt":         { "bsonType": ["null","date"] }
+  }
+}

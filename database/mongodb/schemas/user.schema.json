@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/user.json",
+  "title": "User",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["_id", "email", "name", "role", "password_hash", "createdAt"],
+  "properties": {
+    "_id":          { "bsonType": "objectId" },
+    "email":        { "type": "string", "format": "email" },
+    "name":         { "type": "string", "minLength": 2, "maxLength": 80 },
+    "role":         { "enum": ["admin", "researcher", "student", "guest"] },
+    "password_hash":{ "type": "string" },
+    "avatar":       { "type": ["null", "string"] },
+    "organization": { "type": ["null", "string"] },
+    "createdAt":    { "bsonType": "date" },
+    "lastLogin":    { "bsonType": ["null", "date"] }
+  }
+}
